@@ -1,0 +1,311 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API documentation for User Management",
+    "version": "1.0.0",
+    "title": "NODE-Structure API",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": ["http", "https"],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "abcde12345"
+    }
+  },
+  "host": "localhost:4000",
+  "basePath": "/api",
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Get all the users",
+        "description": "Get all the users",
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Succesfully fetched all the users",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "summary": "Get user",
+        "description": "Get user",
+        "produces": ["application/json"],
+        "security": [{ "Bearer": [] }],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "Succesfully fetched all the users",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "summary": "Save User",
+        "description": "Save User Data",
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Get User Data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": { "type": "string" },
+                "lastName": { "type": "string" },
+                "userName": { "type": "string" },
+                "phoneNo": { "type": "string" },
+                "role": { "type": "string" },
+                "email": { "type": "string" },
+                "password": { "type": "string" },
+                "isActive": { "type": "boolean" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Created",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login User",
+        "description": "Login User Data",
+        "tags": ["User"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Get User Data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": { "type": "string" },
+                "password": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Created",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/users/active": {
+      "post": {
+        "summary": "Active User Change",
+        "description": "Active User Change",
+        "tags": ["User"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Get User Data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "isActive": { "type": "boolean" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/users/:id": {
+      "get": {
+        "summary": "Active User Change",
+        "description": "Active User Change",
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "security": [{ "Bearer": [] }],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "User updated",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+
+    "/roles": {
+      "get": {
+        "summary": "Get All Roles",
+        "description": "Get All Roles",
+        "tags": ["Role"],
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All User Roles",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+
+    "/roles/create": {
+      "post": {
+        "summary": "Active User Change",
+        "description": "Active User Change",
+        "tags": ["Role"],
+        "produces": ["application/json"],
+        "security": [{ "Bearer": [] }],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Get User Data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleName": { "type": "string" },
+                "rolePrefix": { "type": "string" },
+                "isActive": { "type": "boolean" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Created",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/roles/update": {
+      "post": {
+        "summary": "Update Role",
+        "description": "Update Role",
+        "produces": ["application/json"],
+        "tags": ["Role"],
+        "security": [{ "Bearer": [] }],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Get User Data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleName": { "type": "string" },
+                "rolePrefix": { "type": "string" },
+                "isActive": { "type": "boolean" },
+                "id": { "type": "number" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Role Updated",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/roles/delete": {
+      "post": {
+        "summary": "Delete Role",
+        "description": "Delete Role",
+        "produces": ["application/json"],
+        "tags": ["Role"],
+        "security": [{ "Bearer": [] }],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Get User Data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "number" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Role Deleted",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    }
+  }
+}
